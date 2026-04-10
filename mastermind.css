@@ -1,10 +1,14 @@
 * {
   box-sizing: border-box;
 }
+.game_cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .board {
   width: 300px;
   height: 600px;
-  margin: 0 auto;
   background-color: rgb(235, 156, 156);
   border-radius: 6px;
 }
@@ -21,7 +25,7 @@
   max-height: 44px;
   background-color: rgb(151, 145, 235);  
 }
-.pins_colored,
+.selector_pins_color,
 .pins_right {
   display: flex;
   flex-wrap: wrap;
@@ -32,13 +36,15 @@
   max-height: 44px;
   background-color: rgb(168, 243, 168);
 }
+.selector_pins_color .pin{
+  cursor: pointer;
+}
 .pin {
   width: 24px;
   height: 24px;
   border-radius: 50%;
   border: 2px solid white;
   /* background-color: red; */
-  cursor: pointer;
 }
 .small_pin {
   width: 12px;
@@ -78,7 +84,6 @@
 .pin[data-color=orange] {
   background-color: #ffc59e;
 }
-
 
 /* effects */
 
