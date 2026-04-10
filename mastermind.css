@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+.board {
+  width: 300px;
+  height: 600px;
+  margin: 0 auto;
+  background-color: rgb(235, 156, 156);
+  border-radius: 6px;
+}
+.pins_container {
+  display: flex;
+  height: 50px;
+  background-color: rgb(137, 255, 255);
+}
+.pins_left {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 44px;
+  max-height: 44px;
+  background-color: rgb(151, 145, 235);  
+}
+.pins_colored,
+.pins_right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px 20px;
+  height: 44px;
+  max-height: 44px;
+  background-color: rgb(168, 243, 168);
+}
+.pin {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid white;
+  /* background-color: red; */
+  cursor: pointer;
+}
+.small_pin {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+}
+.width_1_4 {
+  width: calc(100% / 4);
+}
+.width_expand {
+  flex: 1;
+}
+
+/* colors */
+.pin[data-color=red] {
+  background-color: #ff8097;
+}
+
+.pin[data-color=blue] {
+  background-color: #92d6e2;
+}
+
+.pin[data-color=green] {
+  background-color: #9fec98;
+}
+
+.pin[data-color=yellow] {
+  background-color: #ffe992;
+}
+
+.pin[data-color=purple] {
+  background-color: #b4a1e2;
+}
+
+.pin[data-color=orange] {
+  background-color: #ffc59e;
+}
+
+
+/* effects */
+
+.pin[data-color=red]:hover {
+  background-color: #cf929d;
+}
+
+.pin[data-color=blue]:hover {
+  background-color: #7ab4be;
+}
+
+.pin[data-color=green]:hover {
+  background-color: #77b372;
+}
+
+.pin[data-color=yellow]:hover {
+  background-color: #cdbc76;
+}
+
+.pin[data-color=purple]:hover {
+  background-color: #8d7eb1;
+}
+
+.pin[data-color=orange]:hover {
+  background-color: #b58c71;
+}
