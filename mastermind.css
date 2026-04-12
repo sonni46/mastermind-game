@@ -9,13 +9,13 @@
 .board {
   width: 300px;
   height: 600px;
-  background-color: rgb(235, 156, 156);
+  /* background-color: rgb(235, 156, 156); */
+  border: 1px solid rgb(109, 102, 102);
   border-radius: 6px;
 }
 .pins_container {
   display: flex;
   height: 50px;
-  background-color: rgb(137, 255, 255);
 }
 .pins_left {
   display: flex;
@@ -23,7 +23,6 @@
   justify-content: space-around;
   height: 44px;
   max-height: 44px;
-  background-color: rgb(151, 145, 235);  
 }
 .selector_pins_color,
 .pins_right {
@@ -34,7 +33,6 @@
   gap: 8px 20px;
   height: 44px;
   max-height: 44px;
-  background-color: rgb(168, 243, 168);
 }
 .selector_pins_color .pin{
   cursor: pointer;
@@ -43,8 +41,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid white;
-  /* background-color: red; */
+  border: 2px solid rgb(104, 102, 102);
 }
 .small_pin {
   width: 12px;
@@ -52,6 +49,7 @@
   border-radius: 50%;
   border: 2px solid white;
   cursor: pointer;
+  border: 2px solid rgb(104, 102, 102);
 }
 .width_1_4 {
   width: calc(100% / 4);
