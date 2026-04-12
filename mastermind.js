@@ -9,6 +9,7 @@ const COLORS = [
 
 let _winning_colors_ = []
 let _selected_colors_ = []
+let _position_color_ = []
 let _board_ = ''
 
 function colors_randomizer() {
@@ -23,7 +24,9 @@ function colors_randomizer() {
 function new_game() {
   _selected_colors_ = []
   _winning_colors_ = []
+  _position_color_ = []
   colors_randomizer()
+  // console.log(_winning_colors_)
 }
 
 function allert_game(txt) {  
@@ -71,14 +74,24 @@ function reset_game() {
   allert_game("New game loaded")
   new_game()
 }
-function is_found_combination() {
-  let res = []
+
+function is_good_color() {
   for(let i = 0; i < 4; i++) {
-    if (_winning_colors_[i] === _selected_colors_[i]) res.push(1)
-    else res.push(0)
+    if (_winning_colors_[i] === _selected_colors_[i]) {
+      _position_color_.push(1)
+    } else if (_winning_colors_.includes(_selected_colors_[i])) {
+      _position_color_.push(2)
+    }
+    else _position_color_.push(0)
   }
-  return !res.includes(0)
+  return !_position_color_.includes(0) && !_position_color_.includes(2)
 }
+
+function is_found_combination() {
+  if (is_good_color()) return true
+  return false
+}
+
 function check_color() {
   let pins_containers = get_pins_containers()
   let len = pins_containers.length - 1
@@ -89,10 +102,12 @@ function check_color() {
   if (pins_colors.length === 4) pins_containers_tail.classList.add("complete") 
   else return
 
-  // XXX fare il check dei colori e delle posizioni
-  // XXX mostrare il risultato in caso di successo
-  if (is_found_combination()) allert_game("You won game")
-  else _selected_colors_ = []
+  if (is_found_combination()) return allert_game("You won game")
+  else {
+    // console.log(_position_color_)
+    _selected_colors_ = []
+    _position_color_ = []
+  } 
 }
 
 function init_game() {
