@@ -38,24 +38,24 @@ function allert_game(txt) {
   },2000)
 }
 
-function get_pins_containers() {
-  // cerca i contenitori dei pin che non hanno lo stato "complete"
-  let pins_containers = document.getElementById("try_board").querySelectorAll(".pins_left")
-  pins_containers = Array.from(pins_containers).filter(cont_pin => !cont_pin.classList.contains("complete"))
+function get_pins_containers() {  
+  let pins_containers = document.getElementById("try_board").querySelectorAll(".pins_container")
+  pins_containers = Array.from(pins_containers).filter(cont_pin => !cont_pin.classList.contains("completed"))
   return pins_containers
 }
+
 function select_color(el) {
   let color = el.getAttribute("data-color");
   let pins_containers = get_pins_containers();
   let len_pins_containers = pins_containers.length - 1;
   if (len_pins_containers === -1) return
   // cerca nella coda tutti i nodi che non hanno data-color
-  let pins_not_color = pins_containers[len_pins_containers].querySelectorAll(":not([data-color])");
+  let pins_not_color = pins_containers[len_pins_containers].querySelectorAll(".pin:not([data-color])");
   //cerca se hai selezionato lo stesso colore
   let is_color_used = _selected_colors_.includes(color)
 
-  if (!pins_not_color.length) return allert_game("Limit reached"); 
-  if (is_color_used) return allert_game("Color already used"); // XXX fare un errore es."stai usando lo stesso colore"
+  if (!pins_not_color.length) return 
+  if (is_color_used) return
   pins_not_color[0].setAttribute("data-color", color); // render color 
   _selected_colors_.push(color)
 }
@@ -87,9 +87,32 @@ function is_good_color() {
   return !_position_color_.includes(0) && !_position_color_.includes(2)
 }
 
+function create_small_pin(staus) {
+  let pins_containers = get_pins_containers()
+  let len = pins_containers.length - 1
+  if (len === -1) return 
+  let pin = document.createElement("div")
+  pin.classList.add(`small_pin`)
+  pin.classList.add(staus)
+  pins_containers[len].querySelector(".pins_right").append(pin) 
+}
+
 function is_found_combination() {
   if (is_good_color()) return true
   return false
+}
+
+function is_wrong_position() {
+  for(let i = 0; i < 4; i++) {
+    if (_position_color_[i] === 1) create_small_pin("good_pos")
+    if (_position_color_[i] === 2) create_small_pin("no_good_pos")
+  }
+}
+
+function render_wrong_position() {  
+  is_wrong_position()
+  _selected_colors_ = []
+  _position_color_ = []
 }
 
 function check_color() {
@@ -97,17 +120,14 @@ function check_color() {
   let len = pins_containers.length - 1
   if (len === -1) return
 
+  if (is_found_combination()) return allert_game("You won game")
+  else render_wrong_position()
+  
   let pins_containers_tail = pins_containers[len]
   let pins_colors = pins_containers_tail.querySelectorAll("[data-color]") 
-  if (pins_colors.length === 4) pins_containers_tail.classList.add("complete") 
+  
+  if (pins_colors.length === 4) pins_containers_tail.closest(".pins_container").classList.add("completed") 
   else return
-
-  if (is_found_combination()) return allert_game("You won game")
-  else {
-    // console.log(_position_color_)
-    _selected_colors_ = []
-    _position_color_ = []
-  } 
 }
 
 function init_game() {
