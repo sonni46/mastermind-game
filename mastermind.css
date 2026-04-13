@@ -48,8 +48,13 @@
   height: 12px;
   border-radius: 50%;
   border: 2px solid white;
-  cursor: pointer;
   border: 2px solid rgb(104, 102, 102);
+}
+.small_pin.good_pos {
+  background-color: rgb(160, 252, 160);
+}
+.small_pin.no_good_pos {
+  background-color: rgb(252, 178, 160);
 }
 .width_1_4 {
   width: calc(100% / 4);
