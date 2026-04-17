@@ -5,7 +5,8 @@ function init_mastermind_render() {
 function render_mastermind_try_board() {
   let try_board = document.getElementById("js_try_board")
   if (try_board.children.length) try_board.innerHTML = ""
-  for (let i = 0; i < 10; i++) {
+  let max = 10;
+  for (let i = 0; i < max; i++) {
     try_board.innerHTML += mastermind_pins_container_tmpl()
   }
 }
