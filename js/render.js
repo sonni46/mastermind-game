@@ -3,7 +3,7 @@ function init_mastermind_render() {
 }
 
 function render_mastermind_try_board() {
-  let try_board = document.getElementById("js_try_board")
+  let try_board = get_mastermind_try_board_node()
   if (try_board.children.length) try_board.innerHTML = ""
   let max = 10;
   for (let i = 0; i < max; i++) {
@@ -12,7 +12,7 @@ function render_mastermind_try_board() {
 }
 
 function create_small_pin(staus) {
-  let pins_containers = mastermind_get_pins_containers()
+  let pins_containers = mastermind_get_pins_containers_no_completed()
   let len = pins_containers.length - 1
   if (len === -1) return 
   let pin = document.createElement("div")

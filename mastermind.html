@@ -18,23 +18,24 @@
   <body>
     <div class="game_cont">
       <div class="board">
-        <div id="js_try_board">
-          
-        </div>
-        <div class="selector_pins_color width_expand">
-          <div class="pin" data-color="red" onclick="mastermind_select_color(this)"></div>
-          <div class="pin" data-color="blue" onclick="mastermind_select_color(this)"></div>
-          <div class="pin" data-color="green" onclick="mastermind_select_color(this)"></div>
-          <div class="pin" data-color="yellow" onclick="mastermind_select_color(this)"></div>
-          <div class="pin" data-color="purple" onclick="mastermind_select_color(this)"></div>
-          <div class="pin" data-color="orange" onclick="mastermind_select_color(this)"></div>
+        <div class="js_mastermind_try_board cont_try_board"></div>
+        <div class="mastermind_separator"></div>
+        <div class="selector_pins_color">
+          <div class="pins_container">
+            <div class="pin" data-color="red" onclick="mastermind_select_color(this)"></div>
+            <div class="pin" data-color="blue" onclick="mastermind_select_color(this)"></div>
+            <div class="pin" data-color="green" onclick="mastermind_select_color(this)"></div>
+            <div class="pin" data-color="yellow" onclick="mastermind_select_color(this)"></div>
+            <div class="pin" data-color="purple" onclick="mastermind_select_color(this)"></div>
+            <div class="pin" data-color="orange" onclick="mastermind_select_color(this)"></div>
+          </div>
         </div>
       </div>
-      <div style="margin-left: 20px;width: 200px;">
+      <div>
         <h3 id="feedback_container"></h3>
-        <button onclick="mastermind_check_color()">Check</button>
-        <button onclick="mastermind_delete_color()">Delete</button>
-        <button onclick="mastermind_reset_game()">Reset</button>
+        <span class="check_button" onclick="mastermind_check_color()">Check</span>
+        <span class="delete_button" onclick="mastermind_delete_color()">Delete</span>
+        <span class="reset_button" onclick="mastermind_reset_game()">Reset</span>
       </div>
     </div>
   </body>

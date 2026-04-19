@@ -3,36 +3,41 @@
 }
 .game_cont {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .board {
+  display: flex;
+  flex-direction: column;
   width: 300px;
   height: 600px;
-  /* background-color: rgb(235, 156, 156); */
-  border: 1px solid rgb(109, 102, 102);
   border-radius: 6px;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.cont_try_board {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.cont_try_board * {
+  margin: auto 0;
 }
 .pins_container {
   display: flex;
   height: 50px;
 }
-.pins_left {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 44px;
-  max-height: 44px;
-}
-.selector_pins_color,
+.pins_left, 
 .pins_right {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 8px 20px;
-  height: 44px;
-  max-height: 44px;
+  height: 100%;
+}
+.pins_left {
+  flex: 1;
+}
+.pins_right {
+  width: calc(100% / 4);
 }
 .selector_pins_color .pin{
   cursor: pointer;
@@ -42,13 +47,14 @@
   height: 24px;
   border-radius: 50%;
   border: 2px solid rgb(104, 102, 102);
+  margin: auto;
 }
 .small_pin {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 2px solid white;
   border: 2px solid rgb(104, 102, 102);
+  margin: auto 12px;
 }
 .small_pin.good_pos {
   background-color: rgb(160, 252, 160);
@@ -56,11 +62,16 @@
 .small_pin.no_good_pos {
   background-color: rgb(244, 255, 39);
 }
-.width_1_4 {
-  width: calc(100% / 4);
+.check_button,
+.delete_button,
+.reset_button {
+  padding: 5px 10px;
+  text-align: center;
+  border: 1px solid rgb(109, 109, 109);
+  border-radius: 6px;
 }
-.width_expand {
-  flex: 1;
+.mastermind_separator {
+  border: 1px solid rgb(158, 158, 158);
 }
 
 /* colors */
