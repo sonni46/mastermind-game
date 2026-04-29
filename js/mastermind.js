@@ -10,11 +10,12 @@ const COLORS = [
 let _winning_colors_ = []
 let _selected_colors_ = []
 let _position_color_ = []
+const MAX_COLOR = 6;
+const MAX_WIN_COLOR = 4
 
 function colors_randomizer() {
-  while (_winning_colors_.length < 4) {
-    let max = 6;
-    let color = Math.floor(Math.random() * max);
+  while (_winning_colors_.length < MAX_WIN_COLOR) {
+    let color = Math.floor(Math.random() * MAX_COLOR);
     if (_winning_colors_.includes(COLORS[color])) continue
     _winning_colors_.push(COLORS[color])
   }
@@ -28,7 +29,7 @@ function mastermind_new_game() {
 }
 
 function mastermind_check_position_color() {
-  for(let i = 0; i < 4; i++) {
+  for(let i = 0; i < MAX_WIN_COLOR; i++) {
     if (_winning_colors_[i] === _selected_colors_[i]) {
       _position_color_.push(1)
     } else if (_winning_colors_.includes(_selected_colors_[i])) {
@@ -50,7 +51,7 @@ function is_found_combination() {
 
 function mastermind_wrong_position() {
   if (!_position_color_.length) return
-  for(let i = 0; i < 4; i++) {
+  for(let i = 0; i < MAX_WIN_COLOR; i++) {
     if (_position_color_[i] === 1) create_small_pin("good_pos")
     if (_position_color_[i] === 2) create_small_pin("no_good_pos")
   }
